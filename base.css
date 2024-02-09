@@ -1,0 +1,11 @@
+div.pixel {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    float: left;
+}
+
+div.first {
+    clear: left;
+
+}

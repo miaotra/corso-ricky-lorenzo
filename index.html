@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="data:;base64,=">
+        <script src="base.js"></script>
+        <script src="program.js"></script>
+        <link rel="stylesheet" href="base.css">        
+    </head>
+
+    <body>
+        <div id="game"></div>
+    </body>
+    <script >
+        window.onload = (ev) => {     
+        console.log("Starting...");
+        window.game = new Game(
+            20,
+            20,
+            "game",
+            mainCycle
+        );
+
+        document.body.onkeydown = function(event) {
+            if (event.repeat) {
+              return;
+            }
+            keyPressed(event.key);
+            event.preventDefault();
+        }
+        document.body.onkeyup = function(event) {
+            if (event.repeat) {
+              return;
+            }
+            keyReleased(event.key);
+            event.preventDefault();
+        }
+    }
+    </script>
+    
+</html>
