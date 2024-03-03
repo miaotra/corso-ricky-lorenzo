@@ -51,4 +51,8 @@ class Game {
     setPixel(x,y,color) {
         this.board[x][y] = color;
     }
+
+    getPixel(x,y) {
+        return this.board[x][y];
+    }
 }
