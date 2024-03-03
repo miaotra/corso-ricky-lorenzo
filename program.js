@@ -1,18 +1,22 @@
 var x = 3;
 var y = 3;
 
-var x2 = 16;
-var y2 = 16;
+var px=[]
+var py=[]
+
+px[0]=2
+px[1]=3
+py[0]=3
+py[1]=3
+
+var l = 2;
 
 var up = false;
 var down = true;
 left = false;
 right = false;
 
-var up2 = true;
-var down2 = false;
-left2 = false;
-right2 = false;
+
 
 winner = 0;
 
@@ -25,15 +29,13 @@ function mainCycle() {
     //   if (up) y--;
 
     var game = window.game;
-   // game.clear();
+   game.clear();
 
     if(game.getPixel(x,y)!="#FFF"){
         winner=2;
     }
 
-    if(game.getPixel(x2,y2)!="#FFF"){
-        winner=1;
-    }
+    
 
     if(winner>0) {
         console.log("winner is "+winner);
@@ -41,9 +43,12 @@ function mainCycle() {
     }
 
 
-    game.setPixel(x, y, "green");
+  
 
-    game.setPixel(x2, y2, "purple");
+    for(i=0;i<l;i++){
+        game.setPixel(px[i],py[i], "green")
+    }
+    
 
     if (up) {
         if (y > 0) {
@@ -72,55 +77,12 @@ function mainCycle() {
         }
     }
 
-
-
-    if (up2) {
-        if (y2 > 0) {
-            y2 = y2 - 1;
-
-        }
-
-    }
-
-    if (down2) {
-        if(y2<19) {
-            y2 = y2 + 1;
-        }
-        
-    }
-
-    if (right2) {
-        if(x2<19) {
-            x2 = x2 + 1;
-        }
-    }
-
-    if (left2) {
-        if(x2>0) {
-            x2 = x2 - 1;
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+for(i=0;i<(l-1);i++){
+    px[i]=px[i+1]
+    py[i]=py[i+1]
+}
+    px[l-1]=x
+    py[l-1]=y
 
     game.draw();
     game.nextFrame();
@@ -164,68 +126,16 @@ function keyPressed(keyCode) {
         down=false;
     }
 
-    
-
-
-
-    if (keyCode == "w") {
-        up2=true;
-        left2=false;
-        right2=false;
-        down2=false;
-    }
-
-
-    if (keyCode == "s") {
-        up2=false;
-        left2=false;
-        right2=false;
-        down2=true;
-    }
-
-
-
-    if (keyCode == "a") {
-        up2=false;
-        left2=true;
-        right2=false;
-        down2=false;
-    }
-
-
-    if (keyCode == "d") {
-        up2=false;
-        left2=false;
-        right2=true;
-        down2=false;
-    }
-
-    
-
- 
-    
-
-   
-
-
 }
 
 
 function keyReleased(keyCode) {
     console.log("Key Released: " + keyCode);
-
-    /* up = (keyCode == "ArrowUp") ? false : up;
+/*
+    up = (keyCode == "ArrowUp") ? false : up;
     down = (keyCode == "ArrowDown") ? false : down;
     left = (keyCode == "ArrowLeft") ? false : left;
     right = (keyCode == "ArrowRight") ? false : right;
-
-    up2 = (keyCode == "w") ? false : up2;
-    down2 = (keyCode == "s") ? false : down2;
-    left2 = (keyCode == "a") ? false : left2;
-    right2 = (keyCode == "d") ? false : right2;
- */
+*/
 }
-
-
-
-
+   
